@@ -27,9 +27,7 @@ public class Person {
     private Long id;
 
     private String dni;
-    private String lastname;
+    private String full_name;
     private String email;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-    private List<Credit> credits;
 }

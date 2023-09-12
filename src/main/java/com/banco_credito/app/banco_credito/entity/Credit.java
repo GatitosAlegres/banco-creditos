@@ -26,9 +26,9 @@ public class Credit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date fecha;
+    private Date date;
     private double amount;
-    private double rate;
+    private int quotes;
 
     @ManyToOne
     @JoinColumn(name = "person_id")

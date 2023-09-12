@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,15 +27,23 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @PostMapping
-    public Person createPerson(@RequestBody Person person) {
-        return personService.createPerson(person);
+    @GetMapping("/create")
+    public String showCreatePersonForm(Model model) {
+        return "createPerson";
+    }
+
+    @PostMapping("/create")
+    public String createPerson(@RequestBody Person person) {
+        personService.createPerson(person);
+        return "redirect:/persons/create"; // Ruta a la página de creación
     }
 
     @GetMapping
     public List<Person> getAllPersons() {
         return personService.getAllPersons();
     }
+
+
 
     @GetMapping("/{id}")
     public Optional<Person> getPersonById(@PathVariable Long id) {
