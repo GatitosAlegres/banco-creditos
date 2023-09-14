@@ -1,13 +1,10 @@
 package com.banco_credito.app.banco_credito.entity;
 
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -27,7 +24,8 @@ public class Person {
     private Long id;
 
     private String dni;
-    private String full_name;
+    @JsonProperty("full_name")
+    private String fullName;
     private String email;
 
 }

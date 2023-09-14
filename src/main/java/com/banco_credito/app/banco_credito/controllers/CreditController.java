@@ -3,6 +3,7 @@ package com.banco_credito.app.banco_credito.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +19,9 @@ import com.banco_credito.app.banco_credito.services.CreditService;
 
 @RestController
 @RequestMapping("/credits")
+@RequiredArgsConstructor
 public class CreditController {
     private final CreditService creditService;
-
-    @Autowired
-    public CreditController(CreditService creditService) {
-        this.creditService = creditService;
-    }
 
     @PostMapping
     public Credit createCredit(@RequestBody Credit credit) {

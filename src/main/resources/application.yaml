@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/creditbd
-    username: root
-    password: 1234
+    url: jdbc:postgresql://localhost:5432/creditbd
+    username: postgres
+    password: admin123
   jpa:
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect

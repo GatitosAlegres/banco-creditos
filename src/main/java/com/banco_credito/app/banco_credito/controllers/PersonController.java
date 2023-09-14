@@ -3,6 +3,7 @@ package com.banco_credito.app.banco_credito.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,31 +20,19 @@ import com.banco_credito.app.banco_credito.services.PersonService;
 
 @RestController
 @RequestMapping("/persons")
+@RequiredArgsConstructor
 public class PersonController {
     private final PersonService personService;
 
-    @Autowired
-    public PersonController(PersonService personService) {
-        this.personService = personService;
-    }
-
-    @GetMapping("/create")
-    public String showCreatePersonForm(Model model) {
-        return "createPerson";
-    }
-
-    @PostMapping("/create")
-    public String createPerson(@RequestBody Person person) {
-        personService.createPerson(person);
-        return "redirect:/persons/create"; // Ruta a la página de creación
+    @PostMapping
+    public Person createPerson(@RequestBody Person person) {
+        return personService.createPerson(person);
     }
 
     @GetMapping
     public List<Person> getAllPersons() {
         return personService.getAllPersons();
     }
-
-
 
     @GetMapping("/{id}")
     public Optional<Person> getPersonById(@PathVariable Long id) {
